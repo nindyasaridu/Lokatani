@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.nindyasaridu.lokataniapps.MenuActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top|center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="120dp"
+            android:background="@drawable/logo"
+            android:id="@+id/imageView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+            android:textSize="20sp"
+            android:textColor="@color/colorText"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/tvKelolaLahan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mengelola Lahan"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/tvJadwalLahan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Penjadwalan Lahan"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/tvHasilPanen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manajemen Hasil Panen"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/tvPrediksiKeuntungan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prediksi Keuntungan"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/KomoditiPasar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harga Komoditi Pasar"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+
+</RelativeLayout>
