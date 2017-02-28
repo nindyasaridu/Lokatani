@@ -3,6 +3,7 @@ package com.example.nindyasaridu.lokataniapps;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -61,6 +62,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Button btnRegister2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.signup);
+        Button mEmailSignInButton = (Button) findViewById(R.id.btnRegister2);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,6 +94,23 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
         mLoginFormView = findViewById(R.id.login_form);
 //        mProgressView = findViewById(R.id.login_progress);
+
+        btnRegister2     = (Button) findViewById(R.id.btnRegister2);
+        btnRegister2.setOnClickListener(operasi);
+    }
+
+    View.OnClickListener operasi = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.btnRegister2:Register(); break;
+            }
+        }
+    };
+
+    private void Register(){
+        Intent intentTambah = new Intent(getBaseContext(), MenuActivity.class);
+        startActivityForResult(intentTambah, 0);
     }
 
     private void populateAutoComplete() {

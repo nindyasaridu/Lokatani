@@ -101,14 +101,16 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/signup"
+                    android:id="@+id/btnRegister2"
                     style="?android:textAppearanceSmall"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="16dp"
                     android:text="Sign Up"
-                    android:background="@color/colorText"
-                    android:textStyle="bold" />
+                    android:textColor="#fff"
+                    android:background="@color/colorButton"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
             </LinearLayout>
 
         </LinearLayout>

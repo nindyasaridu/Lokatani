@@ -94,7 +94,8 @@
                     android:background="@color/colorButton"
                     android:textStyle="bold"
                     android:layout_marginRight="10dp"
-                    android:textColor="#fff"/>
+                    android:textColor="#fff"
+                    android:layout_marginBottom="10dp"/>
 
                 <Button
                     android:id="@+id/btnRegister"
@@ -105,7 +106,8 @@
                     android:text="Sign Up"
                     android:background="@color/colorButton"
                     android:textStyle="bold"
-                    android:textColor="#fff"/>
+                    android:textColor="#fff"
+                    android:layout_marginBottom="10dp"/>
             </LinearLayout>
 
         </LinearLayout>
