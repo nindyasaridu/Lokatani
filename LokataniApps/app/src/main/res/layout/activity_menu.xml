@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:text="Mengelola Lahan"
             android:textSize="15sp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="30dp" />
 
         <TextView
             android:id="@+id/tvJadwalLahan"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:text="Penjadwalan Lahan"
             android:textSize="15sp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="20dp" />
 
         <TextView
             android:id="@+id/tvHasilPanen"
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="Manajemen Hasil Panen"
             android:textSize="15sp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="20dp" />
 
         <TextView
             android:id="@+id/tvPrediksiKeuntungan"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="Prediksi Keuntungan"
             android:textSize="15sp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="20dp" />
 
         <TextView
             android:id="@+id/KomoditiPasar"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:text="Harga Komoditi Pasar"
             android:textSize="15sp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="20dp" />
     </LinearLayout>
 
 </RelativeLayout>
