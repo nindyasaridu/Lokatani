@@ -33,7 +33,8 @@
             android:label="@string/title_activity_kelola_panen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HargaKomoditiActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".PrediksiKeuntunganActivity"></activity>
     </application>
 
 </manifest>
