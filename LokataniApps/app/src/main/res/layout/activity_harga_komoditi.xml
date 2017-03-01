@@ -21,12 +21,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
+
+            android:background="@drawable/card"
             android:weightSum="1">
 
             <ImageView
                 android:layout_width="70dp"
-                android:layout_height="60dp"
+                android:layout_height="70dp"
                 android:background="@drawable/corn"/>
 
             <TextView
@@ -55,11 +56,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:background="@drawable/card">
 
             <ImageView
                 android:layout_width="70dp"
-                android:layout_height="60dp"
+                android:layout_height="70dp"
                 android:background="@drawable/wheat"/>
 
             <TextView
@@ -90,11 +91,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/card"
             android:layout_marginBottom="20dp">
 
             <ImageView
                 android:layout_width="70dp"
-                android:layout_height="60dp"
+                android:layout_height="70dp"
                 android:background="@drawable/carrot"/>
 
             <TextView

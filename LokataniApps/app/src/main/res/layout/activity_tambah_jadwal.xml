@@ -19,78 +19,85 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+            android:background="@drawable/card"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/information"/>
-
-            <EditText
-                android:id="@+id/etNamaEvent"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nama Event"
-                android:layout_marginLeft="10dp"/>
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/information"/>
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/tanggal"/>
+                <EditText
+                    android:id="@+id/etNamaEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama Event"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/etTanggal"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tanggal"
-                android:inputType="date"
-                android:layout_marginLeft="10dp"/>
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/tanggal"/>
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/waktu"/>
+                <EditText
+                    android:id="@+id/etTanggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tanggal"
+                    android:inputType="date"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/etWaktu"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Waktu"
-                android:inputType="time"
-                android:layout_marginLeft="10dp"/>
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/waktu"/>
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/smartphone"/>
+                <EditText
+                    android:id="@+id/etWaktu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Waktu"
+                    android:inputType="time"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/etKeterangan"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Keterangan"
-                android:layout_marginLeft="10dp"/>
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/smartphone"/>
+
+                <EditText
+                    android:id="@+id/etKeterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Keterangan"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
         </LinearLayout>
 
         <Button
@@ -99,7 +106,7 @@
             android:layout_height="wrap_content"
             android:text="Tambah"
             android:background="@color/colorButton"
-            android:layout_marginLeft="230dp"
+            android:layout_marginLeft="250dp"
             android:layout_marginTop="20dp"
             android:textColor="#fff"/>
     </LinearLayout>
