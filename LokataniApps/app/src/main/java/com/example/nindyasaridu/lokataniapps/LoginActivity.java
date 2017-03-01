@@ -358,7 +358,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                Intent intentTambah = new Intent(getBaseContext(), MenuActivity.class);
+                Intent intentTambah = new Intent(getBaseContext(), MainActivity.class);
                 startActivityForResult(intentTambah, 0);
 //                finish();
             } else {
