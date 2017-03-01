@@ -32,11 +32,7 @@
             android:name=".KelolaPanenActivity"
             android:label="@string/title_activity_kelola_panen"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HargaKomoditiActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".HargaKomoditiActivity"></activity>
     </application>
 
 </manifest>
