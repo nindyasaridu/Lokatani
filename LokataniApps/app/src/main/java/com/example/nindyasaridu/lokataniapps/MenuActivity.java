@@ -91,7 +91,7 @@ public class MenuActivity extends AppCompatActivity
             Intent intentTambah = new Intent(getBaseContext(), MenuActivity.class);
             startActivityForResult(intentTambah, 0);
         } else if (id == R.id.nav_keuntungan) {
-            Intent intentTambah = new Intent(getBaseContext(), MenuActivity.class);
+            Intent intentTambah = new Intent(getBaseContext(), PrediksiKeuntunganActivity.class);
             startActivityForResult(intentTambah, 0);
         } else if (id == R.id.nav_komoditi) {
             Intent intentTambah = new Intent(getBaseContext(), MenuActivity.class);
