@@ -12,8 +12,10 @@
         android:icon="@drawable/carrot"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".SplashScreenActivity">
+
+            <!-- android:theme="@android:style/Theme.NoTitleBar.Fullscreen"> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,12 +30,14 @@
             android:label="@string/title_activity_register" />
         <activity android:name=".TambahJadwalActivity" />
         <activity android:name=".MenuActivity" />
-        <activity
-            android:name=".KelolaPanenActivity"
-            android:label="@string/title_activity_kelola_panen"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <!-- <activity -->
+        <!-- android:name=".KelolaPanenActivity" -->
+        <!-- android:label="@string/title_activity_kelola_panen" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
         <activity android:name=".HargaKomoditiActivity" />
-        <activity android:name=".PrediksiKeuntunganActivity"></activity>
+        <activity android:name=".PrediksiKeuntunganActivity" />
+        <activity android:name=".HasilPanenActivity" />
+        <activity android:name=".DetilPrediksiActivity"></activity>
     </application>
 
 </manifest>

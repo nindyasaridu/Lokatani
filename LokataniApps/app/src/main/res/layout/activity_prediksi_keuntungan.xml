@@ -239,7 +239,7 @@
         android:layout_below="@+id/back_jual"
         android:background="@color/colorButton"
         android:textColor="@android:color/white"
-        android:id="@+id/prediksi"
+        android:id="@+id/btnPrediksi"
         android:layout_alignRight="@+id/back_jual"
         android:layout_alignEnd="@+id/back_jual"
         android:layout_alignLeft="@+id/back_jual"
