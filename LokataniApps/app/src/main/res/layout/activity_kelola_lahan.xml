@@ -12,7 +12,7 @@
         android:layout_gravity="center"
         android:background="@drawable/card"
         android:id="@+id/coba"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         >
 
         <TextView
@@ -93,7 +93,7 @@
         android:background="@drawable/card"
         android:id="@+id/coba2"
         android:layout_below="@+id/coba"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         >
 
         <TextView
