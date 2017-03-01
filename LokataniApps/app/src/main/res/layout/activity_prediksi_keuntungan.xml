@@ -237,11 +237,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/back_jual"
-        android:layout_alignLeft="@+id/back_jual"
-        android:layout_alignStart="@+id/back_jual"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@color/colorButton"
         android:textColor="@android:color/white"
         android:id="@+id/prediksi"
         android:layout_alignRight="@+id/back_jual"
-        android:layout_alignEnd="@+id/back_jual" />
+        android:layout_alignEnd="@+id/back_jual"
+        android:layout_alignLeft="@+id/back_jual"
+        android:layout_alignStart="@+id/back_jual" />
 </RelativeLayout>
