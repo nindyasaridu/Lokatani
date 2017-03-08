@@ -20,14 +20,16 @@ public class KelolaLahanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_kelola_lahan);
         if (conn.connectionCheck()) {
             String stringUrl = "http://128.199.127.175/lokatani_db/getTransaksiLahanByJenis.php?id_lahan=1&&jenis_transaksi=1";
             String res;
             try {
                 res = new HttpTask(this).execute(stringUrl).get();
                 JSONObject fullData = new JSONObject(res);
-                Integer sukses = fullData.getInt('sukses');
-                JSONArray transaksi_lahan  = fullData.getJSONArray('transaksi_lahan');
+                Integer sukses = fullData.getInt("sukses");
+                JSONArray transaksi_lahan  = fullData.getJSONArray("transaksi_lahan");
 
                 for(int i=0; i<transaksi_lahan.length(); i++){
                     System.out.println(transaksi_lahan.get(i));
@@ -35,7 +37,7 @@ public class KelolaLahanActivity extends AppCompatActivity {
 
 
 
-            } catch (InterruptedException | ExecutionException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
@@ -45,7 +47,6 @@ public class KelolaLahanActivity extends AppCompatActivity {
         } else {
             conn.failureAlert();
         }
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kelola_lahan);
+
     }
 }
