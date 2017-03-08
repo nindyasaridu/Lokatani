@@ -1,9 +1,11 @@
 package com.example.nindyasaridu.lokataniapps;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,9 +15,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class MenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.concurrent.ExecutionException;
+
+public class MenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    protected Connection conn = new Connection(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +54,48 @@ public class MenuActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if (conn.connectionCheck()) {
+            String stringUrl = "http://128.199.127.175/lokatani_db/getTransaksiLahanByJenis.php?id_lahan=1&&jenis_transaksi=1";
+            String res;
+            try {
+                res = new HttpTask(this).execute(stringUrl).get();
+                JSONObject fullData = new JSONObject(res);
+                JSONArray transaksi_lahan  = fullData.getJSONArray("transaksi_lahan");
+                LinearLayout daftar_pemasukan_bahan = (LinearLayout) findViewById(R.id.daftar_pemasukan_bahan);
+                LinearLayout daftar_pemasukan_harga = (LinearLayout) findViewById(R.id.daftar_pemasukan_harga);
+                Integer pemasukan = 0;
+
+                for(int i=0; i<transaksi_lahan.length(); i++){
+                    JSONObject transaksi = (JSONObject) transaksi_lahan.get(i);
+                    TextView bahan = new TextView(this);
+                    bahan.setText(transaksi.getString("nama_transaksi"));
+                    daftar_pemasukan_bahan.addView(bahan);
+
+                    TextView harga = new TextView(this);
+                    Integer jumlah_transaksi = Integer.parseInt(transaksi.getString("jumlah_transaksi"));
+                    String harga_string = (String) NumberFormat.getNumberInstance(Locale.US).format(jumlah_transaksi);
+                    harga.setText("Rp." + harga_string);
+                    harga.setTextColor(Color.parseColor("#4286f4"));
+                    harga.setGravity(Gravity.RIGHT);
+                    daftar_pemasukan_harga.addView(harga);
+                    pemasukan += jumlah_transaksi;
+                }
+
+                TextView uang_masuk = (TextView) findViewById(R.id.uang_masuk);
+                String pemasukan_string = (String) NumberFormat.getNumberInstance(Locale.US).format(pemasukan);
+                uang_masuk.setText("Rp." + pemasukan_string);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            conn.failureAlert();
+        }
     }
 
     @Override
