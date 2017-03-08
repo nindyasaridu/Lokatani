@@ -3,6 +3,8 @@ package com.example.nindyasaridu.lokataniapps;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -20,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +33,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +54,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+    private Connection conn = new Connection(this);
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -210,8 +225,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(username, password);
-            mAuthTask.execute((Void) null);
+            if (conn.connectionCheck()) {
+                mAuthTask = new UserLoginTask(username, password);
+                mAuthTask.setContext(this);
+                mAuthTask.execute((Void) null);
+            }
+
         }
     }
 
@@ -323,33 +342,96 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         private final String mEmail;
         private final String mPassword;
+        private final String loginUrl = "http://128.199.127.175/lokatani_db/login.php";
+        protected Context context;
+        protected JSONObject responseObject = null;
 
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
         }
 
+        public void setContext(Context context) {
+            this.context = context;
+        }
+
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
+//            try {
+//                // Simulate network access.
+//                //Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                return false;
+//            }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
+            InputStream is = null;
+            int len = 500;
+            boolean loginSukses = false;
+
+            try {
+                URL url = new URL(loginUrl);
+                String parameters = "username=" + mEmail + "&password=" + mPassword;
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+
+                DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
+                wr.writeBytes(parameters);
+                wr.flush();
+                wr.close();
+
+                conn.connect();
+                int response = conn.getResponseCode();
+                Log.d("Response from server:", String.valueOf(response));
+                is = conn.getInputStream();
+
+                String data =  readIt(is, len);
+                JSONObject responseData = null;
+                try {
+                    responseData = new JSONObject(data);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Integer sukses = responseData.getInt("sukses");
+                String pesan = responseData.getString("pesan");
+                System.out.println("sukses: " + sukses + "pesan: " + pesan);
+                if (sukses == 1) {
+                    loginSukses = true;
+                }
+
+                responseObject = responseData;
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
+//            for (String credential : DUMMY_CREDENTIALS) {
+//                String[] pieces = credential.split(":");
+//                if (pieces[0].equals(mEmail)) {
+//                    // Account exists, return true if the password matches.
+//                    return pieces[1].equals(mPassword);
+//                }
+//            }
+
             // TODO: register the new account here.
-            return true;
+            return loginSukses;
         }
 
         @Override
@@ -357,13 +439,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
 
+            String pesan = null;
+            try {
+                pesan = responseObject.getString("pesan");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             if (success) {
                 Intent intentTambah = new Intent(getBaseContext(), MenuActivity.class);
                 startActivityForResult(intentTambah, 0);
 //                finish();
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+//                mPasswordView.setError(getString(R.string.error_incorrect_password));
+//                mPasswordView.requestFocus();
+                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage(pesan);
+
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         }
 
@@ -371,6 +464,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected void onCancelled() {
             mAuthTask = null;
             showProgress(false);
+        }
+
+        public String readIt(InputStream stream, int len) throws IOException {
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            byte[] buffer = new byte[len];
+            int length;
+            while ((length = stream.read(buffer)) != -1) {
+                out.write(buffer, 0, length);
+            }
+            return out.toString();
         }
     }
 }
