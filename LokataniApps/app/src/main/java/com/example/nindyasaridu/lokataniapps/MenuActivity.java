@@ -105,13 +105,16 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                     pengeluaran += jumlah_transaksi2;
                 }
 
+                Integer hasil_akhir = pemasukan - pengeluaran;
+
                 TextView uang_masuk = (TextView) findViewById(R.id.uang_masuk);
                 TextView uang_keluar = (TextView) findViewById(R.id.uang_keluar);
                 TextView total = (TextView) findViewById(R.id.total);
+
                 String pemasukan_string = (String) NumberFormat.getNumberInstance(Locale.US).format(pemasukan);
                 String pengeluaran_string = (String) NumberFormat.getNumberInstance(Locale.US).format(pengeluaran);
-                Integer hasil_akhir = pemasukan - pengeluaran;
-                total.setText("Rp."+ hasil_akhir);
+                String hasil_akhir_string = (String) NumberFormat.getNumberInstance(Locale.US).format(hasil_akhir);
+                total.setText("Rp."+ hasil_akhir_string);
                 uang_masuk.setText("Rp." + pemasukan_string);
                 uang_keluar.setText("Rp." + pengeluaran_string);
 
