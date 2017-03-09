@@ -24,15 +24,12 @@
     <include layout="@layout/activity_kelola_lahan"
         android:id="@+id/include" />
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/plus"
-        app:layout_anchor="@+id/include"
-        android:id="@+id/imageView3"
-        app:layout_anchorGravity="bottom|right"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_gravity="center_vertical|center_horizontal" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </android.support.design.widget.CoordinatorLayout>

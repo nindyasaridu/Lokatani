@@ -118,6 +118,14 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 uang_masuk.setText("Rp." + pemasukan_string);
                 uang_keluar.setText("Rp." + pengeluaran_string);
 
+                FloatingActionButton myFab = (FloatingActionButton) findViewById(R.id.fab);
+                myFab.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent intentTambah = new Intent(getBaseContext(), TambahAktifitas.class);
+                        startActivityForResult(intentTambah, 0);
+                    }
+                });
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {

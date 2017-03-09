@@ -68,6 +68,10 @@ public class HasilPanenActivity extends AppCompatActivity {
 
                         gambar_tanaman.setImageResource(R.drawable.corn);
                     }
+                    else if(Objects.equals(isigudang.getString("nama_tanaman"), "Wortel")) {
+
+                        gambar_tanaman.setImageResource(R.drawable.carrot);
+                    }
                     kotak1.addView(gambar_tanaman);
 
                     LinearLayout kotak2 = new LinearLayout(this);
