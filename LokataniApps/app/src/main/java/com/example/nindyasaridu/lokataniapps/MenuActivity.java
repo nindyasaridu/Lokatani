@@ -57,14 +57,21 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
         if (conn.connectionCheck()) {
             String stringUrl = "http://128.199.127.175/lokatani_db/getTransaksiLahanByJenis.php?id_lahan=1&&jenis_transaksi=1";
-            String res;
+            String stringUrl2 = "http://128.199.127.175/lokatani_db/getTransaksiLahanByJenis.php?id_lahan=1&&jenis_transaksi=-1";
+            String res, res2;
             try {
                 res = new HttpTask(this).execute(stringUrl).get();
+                res2 = new HttpTask(this).execute(stringUrl2).get();
                 JSONObject fullData = new JSONObject(res);
+                JSONObject fullData2 = new JSONObject(res2);
                 JSONArray transaksi_lahan  = fullData.getJSONArray("transaksi_lahan");
+                JSONArray transaksi_lahan2  = fullData2.getJSONArray("transaksi_lahan");
                 LinearLayout daftar_pemasukan_bahan = (LinearLayout) findViewById(R.id.daftar_pemasukan_bahan);
                 LinearLayout daftar_pemasukan_harga = (LinearLayout) findViewById(R.id.daftar_pemasukan_harga);
+                LinearLayout daftar_pengeluaran_bahan = (LinearLayout) findViewById(R.id.daftar_pengeluaran_bahan);
+                LinearLayout daftar_pengeluaran_harga = (LinearLayout) findViewById(R.id.daftar_pengeluaran_harga);
                 Integer pemasukan = 0;
+                Integer pengeluaran = 0;
 
                 for(int i=0; i<transaksi_lahan.length(); i++){
                     JSONObject transaksi = (JSONObject) transaksi_lahan.get(i);
@@ -82,9 +89,31 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                     pemasukan += jumlah_transaksi;
                 }
 
+                for(int i=0; i<transaksi_lahan2.length(); i++){
+                    JSONObject transaksi2 = (JSONObject) transaksi_lahan2.get(i);
+                    TextView bahan = new TextView(this);
+                    bahan.setText(transaksi2.getString("nama_transaksi"));
+                    daftar_pengeluaran_bahan.addView(bahan);
+
+                    TextView harga = new TextView(this);
+                    Integer jumlah_transaksi2 = Integer.parseInt(transaksi2.getString("jumlah_transaksi"));
+                    String harga_string = (String) NumberFormat.getNumberInstance(Locale.US).format(jumlah_transaksi2);
+                    harga.setText("Rp." + harga_string);
+                    harga.setTextColor(Color.parseColor("#f44242"));
+                    harga.setGravity(Gravity.RIGHT);
+                    daftar_pengeluaran_harga.addView(harga);
+                    pengeluaran += jumlah_transaksi2;
+                }
+
                 TextView uang_masuk = (TextView) findViewById(R.id.uang_masuk);
+                TextView uang_keluar = (TextView) findViewById(R.id.uang_keluar);
+                TextView total = (TextView) findViewById(R.id.total);
                 String pemasukan_string = (String) NumberFormat.getNumberInstance(Locale.US).format(pemasukan);
+                String pengeluaran_string = (String) NumberFormat.getNumberInstance(Locale.US).format(pengeluaran);
+                Integer hasil_akhir = pemasukan - pengeluaran;
+                total.setText("Rp."+ hasil_akhir);
                 uang_masuk.setText("Rp." + pemasukan_string);
+                uang_keluar.setText("Rp." + pengeluaran_string);
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
