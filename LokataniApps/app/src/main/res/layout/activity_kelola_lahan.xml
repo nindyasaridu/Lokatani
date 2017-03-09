@@ -6,10 +6,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.nindyasaridu.lokataniapps.KelolaLahanActivity">
 
@@ -52,6 +49,15 @@
             android:layout_below="@+id/pemasukan"
             android:layout_alignLeft="@+id/gambaran"
             android:layout_alignStart="@+id/gambaran" />
+
+        <TextView
+            android:text="Keuntungan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/hasil"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/pengeluaran"
+            android:layout_alignLeft="@+id/gambaran" />
 
         <TextView
             android:text="-"
@@ -133,6 +139,60 @@
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:id="@+id/daftar_pemasukan_harga">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/card"
+        android:id="@+id/coba3"
+        android:layout_below="@+id/coba2"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        >
+
+        <TextView
+            android:text="Pengeluaran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/judul_pengeluaran"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/judul_pengeluaran"
+            android:id="@+id/daftar_pengeluaran">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/judul_pengeluaran"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:id="@+id/daftar_pengeluaran_bahan">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/judul_pengeluaran"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:id="@+id/daftar_pengeluaran_harga">
 
             </LinearLayout>
 

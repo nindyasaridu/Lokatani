@@ -39,7 +39,8 @@
         <activity android:name=".HargaKomoditiActivity" />
         <activity android:name=".PrediksiKeuntunganActivity" />
         <activity android:name=".HasilPanenActivity" />
-        <activity android:name=".DetilPrediksiActivity"></activity>
+        <activity android:name=".DetilPrediksiActivity" />
+        <activity android:name=".TambahAktifitas"></activity>
     </application>
 
 </manifest>
