@@ -15,85 +15,40 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/card"
-        android:id="@+id/back_pengeluaran"
+        android:id="@+id/pengeluaranWrapper"
+        android:padding="20dp"
         android:layout_margin="10dp">
 
         <TextView
-            android:text="Pengeluaran"
+            android:text="Total Pengeluaran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/judul_pengeluaran"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="5dp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:text="Pupuk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pupuk"
-            android:layout_below="@+id/judul_pengeluaran"
-            android:layout_centerVertical="true"
-            android:layout_alignLeft="@+id/judul_pengeluaran"
-            android:layout_alignStart="@+id/judul_pengeluaran"
-            android:layout_marginTop="15dp"/>
-
-        <TextView
-            android:text="Pembersih Hama"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/hama"
-            android:layout_below="@+id/pupuk"
-            android:layout_alignLeft="@+id/pupuk"
-            android:layout_alignStart="@+id/pupuk"/>
-
-        <TextView
-            android:text="Total"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/judul_total"
+            android:id="@+id/tvJudulPengeluaran"
+            android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:layout_below="@+id/hama"
-            android:layout_alignLeft="@+id/hama"
-            android:layout_alignStart="@+id/hama"
-            android:layout_marginTop="20dp"/>
+            android:textSize="16dp"/>
 
         <TextView
             android:text="Rp. 100.000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/uang_pupuk"
-            android:textColor="@android:color/holo_red_dark"
-            android:layout_alignBaseline="@+id/pupuk"
-            android:layout_alignBottom="@+id/pupuk"
-            android:layout_centerVertical="true"
+            android:id="@+id/tvTotalPengeluaran"
+            android:textColor="@color/colorRedText"
+            android:layout_alignBaseline="@+id/tvJudulPengeluaran"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"/>
 
         <TextView
-            android:text="Rp. 100.000"
-            android:layout_width="wrap_content"
+            android:text="Detail Pengeluaran"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_red_dark"
-            android:id="@+id/uang_hama"
-            android:layout_alignBaseline="@+id/hama"
-            android:layout_alignBottom="@+id/hama"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:text="Rp. 200.000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_red_dark"
-            android:id="@+id/total"
-            android:layout_below="@+id/uang_hama"
+            android:id="@+id/tvJudulDetailPengeluaran"
+            android:layout_below="@+id/tvJudulPengeluaran"
             android:layout_marginTop="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:textAlignment="center"
+            android:textColor="@color/colorSecondaryText"
+            android:clickable="true"/>
 
     </RelativeLayout>
 
@@ -102,46 +57,41 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/card"
-        android:id="@+id/back_hasil"
-        android:layout_below="@+id/back_pengeluaran"
-        android:layout_margin="10dp"
-        >
+        android:id="@+id/hasilWrapper"
+        android:layout_below="@+id/pengeluaranWrapper"
+        android:padding="20dp"
+        android:layout_margin="10dp">
 
         <TextView
             android:text="Hasil Panen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:textStyle="bold"
-            android:id="@+id/judul_hasil_panen"
+            android:id="@+id/tvJudulHasilPanen"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp" />
+            android:layout_alignParentStart="true" />
 
         <EditText
-            android:layout_width="50dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/textJumlahHasilPanen"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="71dp"
-            android:layout_marginEnd="71dp" />
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"/>
 
         <TextView
             android:text="Kg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:id="@+id/sataun"
-            android:layout_marginRight="12dp"
-            android:layout_marginEnd="12dp"
+            android:id="@+id/tvKilogram"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -149,99 +99,64 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/card"
-        android:id="@+id/back_jual"
-        android:layout_below="@+id/back_hasil"
+        android:id="@+id/penjualanWrapper"
+        android:layout_below="@+id/hasilWrapper"
+        android:padding="20dp"
         android:layout_margin="10dp">
 
         <TextView
-            android:text="Penjualan Panen"
+            android:text="Rencana Harga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/judul_penjualan"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="5dp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:text="Harga"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/harga_jual"
-            android:layout_centerVertical="true"
-            android:layout_alignLeft="@+id/judul_penjualan"
-            android:layout_alignStart="@+id/judul_penjualan"
-            android:layout_below="@+id/judul_penjualan"
-            android:layout_marginTop="20dp"/>
-
-        <TextView
-            android:text="Satuan Penjualan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/satuan_jual"
-            android:layout_centerVertical="true"
-            android:layout_below="@+id/harga_jual"
-            android:layout_alignLeft="@+id/harga_jual"
-            android:layout_alignStart="@+id/harga_jual"
-            android:layout_marginTop="10dp"/>
-
-        <TextView
-            android:text="Harga Jual Panen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/jual_panen"
-            android:layout_centerVertical="true"
             android:textStyle="bold"
-            android:layout_below="@+id/satuan_jual"
-            android:layout_alignLeft="@+id/harga_jual"
-            android:layout_alignStart="@+id/harga_jual"
-            android:layout_marginTop="20dp"/>
+            android:id="@+id/tvJudulHasilPanen"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-        <Spinner
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/isi_harga"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="16dp"
-            android:layout_marginEnd="16dp"
-            android:id="@+id/list_satuan"></Spinner>
+        <TextView
+            android:text="Rp."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tvRupiah"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="120dp" />
 
         <EditText
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/isi_harga"
-            android:layout_alignBaseline="@+id/harga_jual"
-            android:layout_alignBottom="@+id/harga_jual"
-            android:layout_alignLeft="@+id/list_satuan"
-            android:layout_alignStart="@+id/list_satuan" />
+            android:id="@+id/textRencanaHarga"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"/>
 
         <TextView
-            android:text="Rp. 10.000/Kg"
+            android:text="/Kg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/harga_akhir"
             android:textStyle="bold"
-            android:layout_alignBaseline="@+id/jual_panen"
-            android:layout_alignBottom="@+id/jual_panen"
-            android:layout_alignRight="@+id/list_satuan"
-            android:layout_alignEnd="@+id/list_satuan" />
+            android:id="@+id/tvKilogram"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" />
+
     </RelativeLayout>
 
     <Button
         android:text="PREDIKSI KEUNTUNGAN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/back_jual"
-        android:background="@color/colorButton"
+        android:layout_below="@+id/penjualanWrapper"
+        android:background="@drawable/rounded_button"
         android:textColor="@android:color/white"
         android:id="@+id/btnPrediksi"
-        android:layout_alignRight="@+id/back_jual"
-        android:layout_alignEnd="@+id/back_jual"
-        android:layout_alignLeft="@+id/back_jual"
-        android:layout_alignStart="@+id/back_jual" />
+        android:layout_marginTop="40dp"
+        android:layout_alignRight="@+id/penjualanWrapper"
+        android:layout_alignEnd="@+id/pengeluaranWrapper"
+        android:layout_alignLeft="@+id/pengeluaranWrapper"
+        android:layout_alignStart="@+id/pengeluaranWrapper" />
 </RelativeLayout>
