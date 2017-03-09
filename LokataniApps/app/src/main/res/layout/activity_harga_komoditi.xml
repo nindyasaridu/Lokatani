@@ -111,6 +111,7 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_gravity="center"
+                android:rotation="180"
                 android:background="@drawable/triangle2"/>
 
             <TextView
@@ -188,6 +189,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:rotation="180"
                     android:background="@drawable/triangle2"/>
 
                 <TextView
