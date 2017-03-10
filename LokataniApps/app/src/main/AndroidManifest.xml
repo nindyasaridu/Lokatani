@@ -40,7 +40,8 @@
         <activity android:name=".PrediksiKeuntunganActivity" />
         <activity android:name=".HasilPanenActivity" />
         <activity android:name=".DetilPrediksiActivity" />
-        <activity android:name=".TambahAktifitas"></activity>
+        <activity android:name=".TambahAktifitas" />
+        <activity android:name=".TambahStok"></activity>
     </application>
 
 </manifest>
