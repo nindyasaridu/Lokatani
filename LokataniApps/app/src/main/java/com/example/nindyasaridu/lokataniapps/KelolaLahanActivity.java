@@ -7,7 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -26,7 +25,7 @@ public class KelolaLahanActivity extends AppCompatActivity {
             String stringUrl = "http://128.199.127.175/lokatani_db/getTransaksiLahanByJenis.php?id_lahan=1&&jenis_transaksi=1";
             String res;
             try {
-                res = new HttpTask(this).execute(stringUrl).get();
+                res = new HttpGetTask(this).execute(stringUrl).get();
                 JSONObject fullData = new JSONObject(res);
                 Integer sukses = fullData.getInt("sukses");
                 JSONArray transaksi_lahan  = fullData.getJSONArray("transaksi_lahan");

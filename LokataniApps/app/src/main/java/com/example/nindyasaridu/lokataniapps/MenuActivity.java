@@ -1,10 +1,11 @@
 package com.example.nindyasaridu.lokataniapps;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -16,7 +17,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -29,22 +29,14 @@ import java.util.concurrent.ExecutionException;
 
 public class MenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     protected Connection conn = new Connection(this);
+    protected String stringUrl = "http://128.199.127.175/lokatani_db/getTransaksiLahanByJenis.php?id_lahan=1&&jenis_transaksi=1";
+    protected String stringUrl2 = "http://128.199.127.175/lokatani_db/getTransaksiLahanByJenis.php?id_lahan=1&&jenis_transaksi=-1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -55,13 +47,53 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        FloatingActionButton myFab = (FloatingActionButton) findViewById(R.id.fab);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intentTambah = new Intent(getBaseContext(), TambahAktifitasActivity.class);
+                startActivityForResult(intentTambah, 0);
+            }
+        });
+
+        FloatingActionButton myFabRefresh = (FloatingActionButton) findViewById(R.id.fabRefresh);
+        myFabRefresh.setOnClickListener(operasi);
+
+        getData();
+    }
+
+    View.OnClickListener operasi = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.fabRefresh:
+                    getData();
+                    showDialog("Berhasil memuat ulang data.");
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+    protected void showDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message);
+        builder.setNegativeButton("Tutup", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    protected void getData() {
         if (conn.connectionCheck()) {
-            String stringUrl = "http://128.199.127.175/lokatani_db/getTransaksiLahanByJenis.php?id_lahan=1&&jenis_transaksi=1";
-            String stringUrl2 = "http://128.199.127.175/lokatani_db/getTransaksiLahanByJenis.php?id_lahan=1&&jenis_transaksi=-1";
             String res, res2;
             try {
-                res = new HttpTask(this).execute(stringUrl).get();
-                res2 = new HttpTask(this).execute(stringUrl2).get();
+                res = new HttpGetTask(this).execute(stringUrl).get();
+                res2 = new HttpGetTask(this).execute(stringUrl2).get();
                 JSONObject fullData = new JSONObject(res);
                 JSONObject fullData2 = new JSONObject(res2);
                 JSONArray transaksi_lahan  = fullData.getJSONArray("transaksi_lahan");
@@ -70,6 +102,10 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 LinearLayout daftar_pemasukan_harga = (LinearLayout) findViewById(R.id.daftar_pemasukan_harga);
                 LinearLayout daftar_pengeluaran_bahan = (LinearLayout) findViewById(R.id.daftar_pengeluaran_bahan);
                 LinearLayout daftar_pengeluaran_harga = (LinearLayout) findViewById(R.id.daftar_pengeluaran_harga);
+                daftar_pemasukan_bahan.removeAllViews();
+                daftar_pemasukan_harga.removeAllViews();
+                daftar_pengeluaran_bahan.removeAllViews();
+                daftar_pengeluaran_harga.removeAllViews();
                 Integer pemasukan = 0;
                 Integer pengeluaran = 0;
 
@@ -117,14 +153,6 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 total.setText("Rp."+ hasil_akhir_string);
                 uang_masuk.setText("Rp." + pemasukan_string);
                 uang_keluar.setText("Rp." + pengeluaran_string);
-
-                FloatingActionButton myFab = (FloatingActionButton) findViewById(R.id.fab);
-                myFab.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        Intent intentTambah = new Intent(getBaseContext(), TambahAktifitas.class);
-                        startActivityForResult(intentTambah, 0);
-                    }
-                });
 
             } catch (InterruptedException e) {
                 e.printStackTrace();

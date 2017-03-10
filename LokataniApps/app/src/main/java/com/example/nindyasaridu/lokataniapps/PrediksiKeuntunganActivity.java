@@ -3,15 +3,11 @@ package com.example.nindyasaridu.lokataniapps;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.PopupMenu;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -22,7 +18,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.HttpRetryException;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
@@ -48,7 +43,7 @@ public class PrediksiKeuntunganActivity extends AppCompatActivity {
         if (conn.connectionCheck()) {
             String res;
             try {
-                res = new HttpTask(this).execute(this.pengeluaranUrl).get();
+                res = new HttpGetTask(this).execute(this.pengeluaranUrl).get();
                 JSONObject response = new JSONObject(res);
                 JSONArray transaksi_lahan  = response.getJSONArray("transaksi_lahan");
 

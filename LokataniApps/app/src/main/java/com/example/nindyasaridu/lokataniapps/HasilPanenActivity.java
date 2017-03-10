@@ -1,12 +1,9 @@
 package com.example.nindyasaridu.lokataniapps;
 
-import android.graphics.Color;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.ViewGroup;
-import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,8 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.NumberFormat;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
@@ -31,7 +26,7 @@ public class HasilPanenActivity extends AppCompatActivity {
             String stringUrl = "http://128.199.127.175/lokatani_db/getDetailGudangHasTanaman.php?id_gudang=1";
             String res, res2;
             try {
-                res = new HttpTask(this).execute(stringUrl).get();
+                res = new HttpGetTask(this).execute(stringUrl).get();
                 JSONObject fullData = new JSONObject(res);
                 JSONArray detail_gudang_has_tanaman  = fullData.getJSONArray("detail_gudang_has_tanaman");
                 LinearLayout hasil_panen = (LinearLayout) findViewById(R.id.hasil_panen);

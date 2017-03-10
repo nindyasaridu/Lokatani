@@ -4,7 +4,8 @@
     android:id="@+id/activity_tambah_aktifitas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nindyasaridu.lokataniapps.TambahAktifitas">
+    tools:context="com.example.nindyasaridu.lokataniapps.TambahAktifitasActivity"
+    android:paddingTop="40dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -63,7 +64,7 @@
             android:layout_marginBottom="14dp" />
 
         <TextView
-            android:text="Aktifitas"
+            android:text="Aktivitas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -76,7 +77,7 @@
             android:layout_marginBottom="14dp" />
 
         <TextView
-            android:text="Nominal Uang (Rp.)"
+            android:text="Nominal (Rp.)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -92,17 +93,18 @@
     </RelativeLayout>
 
     <Button
-        android:text="TAMBAH AKTIFITAS"
+        android:text="TAMBAH AKTIVITAS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/back_hasil"
         android:layout_alignLeft="@+id/back_hasil"
         android:layout_alignStart="@+id/back_hasil"
-        android:background="@color/colorButton"
+        android:background="@drawable/rounded_button"
         android:textColor="@android:color/white"
         android:id="@+id/tambah_aktivitas"
         android:layout_alignRight="@+id/back_hasil"
-        android:layout_alignEnd="@+id/back_hasil" />
+        android:layout_alignEnd="@+id/back_hasil"
+        android:layout_marginTop="20dp"/>
 
 
 </RelativeLayout>

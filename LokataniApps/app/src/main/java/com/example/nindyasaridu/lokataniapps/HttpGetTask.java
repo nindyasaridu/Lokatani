@@ -23,10 +23,10 @@ import java.net.URL;
  * Created by wicak on 3/8/2017.
  */
 
-public class HttpTask extends AsyncTask<String, Void, String> {
+public class HttpGetTask extends AsyncTask<String, Void, String> {
     private Context context;
 
-    public HttpTask(Context context) {
+    public HttpGetTask(Context context) {
         this.context = context;
     }
 
