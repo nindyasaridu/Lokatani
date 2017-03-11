@@ -4,7 +4,7 @@
     android:id="@+id/activity_tambah_stok"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:paddingTop="40dp"
     tools:context="com.example.nindyasaridu.lokataniapps.TambahStok">
 
     <RelativeLayout
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/jumlah_uang"
+            android:id="@+id/jumlah_tanaman"
             android:layout_below="@+id/spinner2"
             android:layout_alignLeft="@+id/spinner1"
             android:layout_alignStart="@+id/spinner1"
@@ -82,7 +82,7 @@
             android:textStyle="bold"
             android:id="@+id/judul_nominal"
             android:textSize="16sp"
-            android:layout_alignBottom="@+id/jumlah_uang"
+            android:layout_alignBottom="@+id/jumlah_tanaman"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="14dp"

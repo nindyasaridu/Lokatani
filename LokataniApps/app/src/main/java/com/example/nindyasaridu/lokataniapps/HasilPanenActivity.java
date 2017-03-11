@@ -1,5 +1,7 @@
 package com.example.nindyasaridu.lokataniapps;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -20,14 +22,59 @@ import java.util.concurrent.ExecutionException;
 
 public class HasilPanenActivity extends AppCompatActivity {
     protected Connection conn = new Connection(this);
+    protected String stringUrl = "http://128.199.127.175/lokatani_db/getDetailGudangHasTanaman.php?id_gudang=1";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hasil_panen);
+
+        FloatingActionButton myFab = (FloatingActionButton) findViewById(R.id.fab);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intentTambah = new Intent(getBaseContext(), TambahStok.class);
+                startActivityForResult(intentTambah, 0);
+            }
+        });
+
+        FloatingActionButton myFabRefresh = (FloatingActionButton) findViewById(R.id.fabRefresh);
+        myFabRefresh.setOnClickListener(operasi);
+
+        getData();
+    }
+
+    View.OnClickListener operasi = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.fabRefresh:
+                    getData();
+                    showDialog("Berhasil memuat ulang data.");
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+    protected void showDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message);
+        builder.setNegativeButton("Tutup", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    protected void getData(){
         if (conn.connectionCheck()) {
-            String stringUrl = "http://128.199.127.175/lokatani_db/getDetailGudangHasTanaman.php?id_gudang=1";
-            String res, res2;
+
+            String res;
             try {
                 res = new HttpGetTask(this).execute(stringUrl).get();
                 JSONObject fullData = new JSONObject(res);
@@ -103,13 +150,9 @@ public class HasilPanenActivity extends AppCompatActivity {
 
                     hasil_panen.addView(kotak);
 
-                    FloatingActionButton myFab = (FloatingActionButton) findViewById(R.id.fab);
-                    myFab.setOnClickListener(new View.OnClickListener() {
-                        public void onClick(View v) {
-                            Intent intentTambah = new Intent(getBaseContext(), TambahStok.class);
-                            startActivityForResult(intentTambah, 0);
-                        }
-                    });
+
+
+                    onCreate();
 
                 }
 
