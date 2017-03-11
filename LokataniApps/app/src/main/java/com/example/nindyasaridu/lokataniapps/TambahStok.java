@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
-public class TambahStok extends AppCompatActivity {
+public class TambahStok extends AppCompatActivity implements View.OnClickListener{
 
     protected String tambahAktifitasUrl = "http://128.199.127.175/lokatani_db/insertGudangHasTanaman.php";
 
@@ -33,8 +33,8 @@ public class TambahStok extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.spinner_layout, items2);
         dropdown2.setAdapter(adapter2);
 
-        Button btnTambahAktifitas = (Button) findViewById(R.id.tambah_hasil_panen);
-        btnTambahAktifitas.setOnClickListener(this);
+        Button btnTambahStok = (Button) findViewById(R.id.tambah_hasil_panen);
+        btnTambahStok.setOnClickListener(this);
     }
 
     protected void clearInputFields() {
@@ -97,7 +97,7 @@ public class TambahStok extends AppCompatActivity {
         }
 
         HttpPostTask httpTask = new HttpPostTask(this);
-        String parameters = "gudang_id_gudang="+ gudang +"&tanaman_id_tanaman=" + tanaman + "&jumlah=" + stokTanaman;
+        String parameters = "id_gudang="+ gudang +"&id_tanaman=" + tanaman + "&jumlah=" + stokTanaman;
         httpTask.setStringParameters(parameters);
         String res = null;
         JSONObject responseObject = null;

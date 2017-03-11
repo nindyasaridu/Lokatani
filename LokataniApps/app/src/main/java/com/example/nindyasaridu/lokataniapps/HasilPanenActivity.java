@@ -73,13 +73,13 @@ public class HasilPanenActivity extends AppCompatActivity {
 
     protected void getData(){
         if (conn.connectionCheck()) {
-
             String res;
             try {
                 res = new HttpGetTask(this).execute(stringUrl).get();
                 JSONObject fullData = new JSONObject(res);
                 JSONArray detail_gudang_has_tanaman  = fullData.getJSONArray("detail_gudang_has_tanaman");
                 LinearLayout hasil_panen = (LinearLayout) findViewById(R.id.hasil_panen);
+                hasil_panen.removeAllViews();
 
                 for(int i=0; i<detail_gudang_has_tanaman.length(); i++){
                     LinearLayout kotak = new LinearLayout(this);
@@ -149,10 +149,6 @@ public class HasilPanenActivity extends AppCompatActivity {
                     kotak.addView(kotak3);
 
                     hasil_panen.addView(kotak);
-
-
-
-                    onCreate();
 
                 }
 
